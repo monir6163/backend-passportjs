@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import UserModel from "../models/User.js";
+import UserRefreshToken from "../models/UserRefreshToken.js";
 import generateTokens from "../utils/generateTokens.js";
 import refreshAccessToken from "../utils/refreshAccessToken.js";
 import setTokensCookies from "../utils/setTokensCookies.js";
@@ -181,5 +182,36 @@ class UserController {
     });
   }
   // user logout
+  static async userLogout(req, res) {
+    try {
+      const { refreshToken } = req.cookies;
+      if (!refreshToken) {
+        return res.status(400).json({
+          message: "No refresh token provided",
+          status: false,
+          data: null,
+        });
+      }
+      await UserRefreshToken.findOneAndUpdate(
+        { token: refreshToken },
+        { $set: { token: "" } }
+      );
+      res.clearCookie("accessToken");
+      res.clearCookie("refreshToken");
+      res.clearCookie("is_auth");
+      res.status(200).json({
+        message: "User logged out successfully",
+        status: true,
+        error: null,
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: "Internal server error",
+        status: false,
+        error: error.message,
+        data: null,
+      });
+    }
+  }
 }
 export default UserController;

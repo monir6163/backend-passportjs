@@ -2,10 +2,11 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
 import connectDB from "./config/connectDb.js";
-import "./config/passport-jwt-strategy.js"; // JWT strategy for passport
+import "./config/passport-jwt-strategy.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan("dev"));
+app.use(helmet());
 
 // Import routes
 import userRoutes from "./routes/userRoutes.js";
