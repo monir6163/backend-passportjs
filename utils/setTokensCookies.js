@@ -10,7 +10,7 @@ const setTokensCookies = (
     httpOnly: true,
     secure: true,
     maxAge: (accessExpiresIn - Math.floor(Date.now() / 1000)) * 1000, // Convert seconds to milliseconds
-    // sameSite: "Strict",
+    sameSite: "Strict",
   });
 
   // Set the refresh token in a cookie
@@ -18,14 +18,14 @@ const setTokensCookies = (
     httpOnly: true,
     secure: true,
     maxAge: (refreshExpiresIn - Math.floor(Date.now() / 1000)) * 1000, // Convert seconds to milliseconds
-    // sameSite: "Strict",
+    sameSite: "Strict",
   });
   // set the isAuthenticated cookie to true
   res.cookie("is_auth", true, {
     httpOnly: false,
     secure: false,
     maxAge: (refreshExpiresIn - Math.floor(Date.now() / 1000)) * 1000, // Convert seconds to milliseconds
-    // sameSite: "Strict",
+    sameSite: "Strict",
   });
 };
 
