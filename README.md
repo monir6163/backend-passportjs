@@ -4,22 +4,6 @@
 
 Create a secure REST API for user authentication using Node.js, Express, Passportjs, Jwt and MongoDB. The API should support user registration, login, and token-based authentication. Implement security best practices to protect sensitive data and prevent common vulnerabilities.
 
-## Requirements:
-
-- Use Node.js and Express to create the REST API.
-- Use MongoDB as the database to store user information.
-- Use Passport.js for authentication and JWT (JSON Web Tokens) for token-based authentication.
-- Implement user registration and login endpoints.
-- Implement token-based authentication for protected routes.
-- Use bcrypt to hash passwords before storing them in the database.
-- Implement input validation and error handling.
-- Use environment variables to store sensitive information (e.g., database connection string, JWT secret).
-- Implement Rate Limiting to prevent brute-force attacks.
-- Implement CORS to allow cross-origin requests.
-- Use Helmet.js to set various HTTP headers for security.
-- Use dotenv to manage environment variables.
-- Use morgan for logging HTTP requests.
-
 ## Backend Technologies:
 
 - Node.js
