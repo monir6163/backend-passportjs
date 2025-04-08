@@ -1,9 +1,11 @@
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 import UserModel from "../models/User.js";
 import UserRefreshToken from "../models/UserRefreshToken.js";
 import generateTokens from "../utils/generateTokens.js";
 import refreshAccessToken from "../utils/refreshAccessToken.js";
 import setTokensCookies from "../utils/setTokensCookies.js";
+dotenv.config();
 class UserController {
   // user registration
   static async register(req, res) {
