@@ -194,7 +194,7 @@ class UserController {
           data: null,
         });
       }
-      console.log("refreshToken", refreshToken);
+
       await UserRefreshToken.findOneAndUpdate(
         { token: refreshToken },
         { $set: { token: "" } },
