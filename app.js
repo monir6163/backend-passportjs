@@ -27,8 +27,14 @@ app.use(morgan("dev"));
 app.use(helmet());
 
 // Import routes
+import errorHandler from "./middlewares/errorHandler.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 app.use("/api/auth", userRoutes);
+app.use("/api/payment", paymentRoutes);
+
+// Error handling middleware
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
