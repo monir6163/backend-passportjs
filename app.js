@@ -5,7 +5,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
-import connectDB from "./config/connectDb.js";
+import connectDB from "./config/connectdb.js";
 import "./config/passport-jwt-strategy.js";
 dotenv.config();
 const app = express();
