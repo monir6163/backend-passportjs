@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const DATABASE_URL = process.env.DATABASE_URL;
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  origin: process.env.CORS_ORIGIN,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   optionsSuccessStatus: 200,
