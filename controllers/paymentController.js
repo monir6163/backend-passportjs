@@ -36,13 +36,13 @@ class PaymentController {
             quantity: 1,
           },
         ],
-        success_url: `${process.env.CORS_ORIGINS}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${process.env.CORS_ORIGINS}/payment-cancel?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${process.env.CORS_ORIGIN}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${process.env.CORS_ORIGIN}/payment-cancel?session_id={CHECKOUT_SESSION_ID}`,
       };
       const session = await stripe.checkout.sessions.create(params);
       return res.status(200).json(session);
     } catch (error) {
-      console.error("Error creating payment session:", error);
+      console.log("Error creating payment:", error?.message);
       res.status(500).json({
         message: "Internal server error",
         status: false,
