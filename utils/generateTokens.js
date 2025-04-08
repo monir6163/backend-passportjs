@@ -9,7 +9,7 @@ const generateTokens = async (user) => {
       username: user.username,
     };
     // 10 minutes for access token and 1 day for refresh token
-    const accessExpiresIn = Math.floor(Date.now() / 1000) + 30; // 10 minutes
+    const accessExpiresIn = Math.floor(Date.now() / 1000) + 60 * 10; // 10 minutes
     const refreshExpiresIn = Math.floor(Date.now() / 1000) + 60 * 60 * 24; // 1 day
     const accessToken = jwt.sign(
       { ...payload, exp: accessExpiresIn },
